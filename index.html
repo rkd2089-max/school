@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>전국 학교 급식 알리미</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="app-header">
+      <h1 class="app-title">전국 학교 급식 알리미</h1>
+      <p class="app-subtitle">지역과 학교명을 선택하고 오늘의 급식을 바로 확인해 보세요.</p>
+    </header>
+
+    <main class="app-main">
+      <!-- 검색 영역 -->
+      <section class="card search-card">
+        <h2 class="section-title">학교 검색</h2>
+        <form id="searchForm" class="search-form">
+          <div class="form-group">
+            <label for="regionSelect">지역 (교육청)</label>
+            <select id="regionSelect" required>
+              <option value="">시·도 교육청 선택</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="schoolLevelSelect">학교 유형</label>
+            <select id="schoolLevelSelect" required>
+              <option value="">학교 유형 선택</option>
+              <option value="초등학교">초등학교</option>
+              <option value="중학교">중학교</option>
+              <option value="고등학교">고등학교</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="schoolNameInput">학교명</label>
+            <input
+              id="schoolNameInput"
+              type="text"
+              placeholder="예: 서울고, 동탄중, 중앙초"
+              required
+            />
+          </div>
+
+          <button id="searchButton" type="submit" class="btn primary-btn">
+            학교 검색
+          </button>
+
+          <p id="searchStatus" class="status-text" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <!-- 검색 결과 영역 -->
+      <section class="card results-card">
+        <h2 class="section-title">검색 결과</h2>
+        <div id="schoolResults" class="school-list">
+          <p class="placeholder-text">조건을 입력하고 검색하면 학교 목록이 여기에 표시됩니다.</p>
+        </div>
+      </section>
+
+      <!-- 급식표 영역 -->
+      <section class="card meal-card">
+        <div class="meal-header">
+          <div>
+            <h2 class="section-title">오늘의 급식</h2>
+            <p id="selectedSchoolName" class="selected-school">학교를 먼저 선택해 주세요.</p>
+          </div>
+          <div class="meal-date-wrap">
+            <span class="meal-date-label">조회 날짜</span>
+            <input
+              id="mealDateInput"
+              class="meal-date-input"
+              type="date"
+              aria-label="급식 조회 날짜 선택"
+            />
+            <span id="mealDate" class="meal-date-value"></span>
+          </div>
+        </div>
+
+        <div id="mealContent" class="meal-content">
+          <p class="placeholder-text">학교를 선택하면 오늘의 급식 메뉴가 여기에 표시됩니다.</p>
+        </div>
+
+        <p id="mealStatus" class="status-text" aria-live="polite"></p>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <p>나이스 교육정보 개방 포털 공공데이터 기반 · 실시간 API 호출</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
